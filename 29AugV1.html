@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Effect</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+           
+        }
+           
+        .scroll-container {
+            height: 100vh;
+            overflow-y: scroll; 
+            scroll-snap-type: y mandatory;
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            display: none; 
+        }
+        
+        .section {
+            height: 100vh;
+            position: relative;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            /* scroll-snap-align: start; */
+            scroll-snap-align: start;
+        }
+        
+       
+
+        
+        .contentOne, .contentTwo, .contentThree, .contentFour, .contentFive {
+            color: white;
+            border-radius: 5px; 
+            width: 50%;
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 40%;
+            padding: 20px;
+        }
+
+        .carCloudeCss{
+            position: relative;
+            z-index: 900;
+            text-align: center;
+            align-items: center;
+            
+
+        }
+
+        .manfieldCss{
+            position: absolute;
+            z-index: 899;
+            text-align: end;
+            align-items: end;
+
+        }
+        .peopleCss{
+            position: absolute;
+            z-index: 899;
+            text-align: center;
+            align-items: center;
+            left: 45%;
+
+        }
+        .landCss{
+            position: absolute;
+            z-index: 888;
+            text-align: center;
+            align-items: center;
+
+        }
+
+        .contentOne { left: 10%; }
+        .contentTwo { left: 10%; }
+        .contentThree { left: 40%; }
+        .contentFour { left: 10%; }
+        .contentFive { left: 40%; }
+
+   
+        .overlay {
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scroll-container">
+        <div class="section" style="background-image: url('bg1.jpeg');">
+            <div  class="carCloudeCss">
+                <img src="carcloud.webp" alt="carCloud" style="width: auto; height: 650px;">
+            </div>
+            <div class="contentOne">
+                <h1>WELCOME TO <br> REEl WORLD ENTERTAINMENT</h1>
+            </div>
+        </div>
+
+        
+        <div class="section" style="background-image: url('bg2.webp');">
+
+            <div  class="carCloudeCss">
+                <img src="planet.webp" alt="carCloud" style="width: 500px; height: 500px;">
+            </div>
+            <div class="contentTwo">
+                <h1>Our Vision</h1>
+                <p>To revolutionize the Malayalam film industry by producing high-quality, engaging, and impactful films that leave a lasting impression on audiences worldwide.</p>
+            </div>
+           
+
+            <div class="peopleCss">
+                <img src="people.png" alt="peopleImg  style="width: 500px; height:300px;>
+
+            </div>
+            <div class="landCss">
+                <img src="land.webp" alt="landImg style="width:auto ; height: 200px;"">
+            </div>
+
+           
+        </div>
+        <div class="section" style="background-image: url('bg3.webp');">
+
+            <div  class="carCloudeCss">
+                <img src="astronaut11.webp" alt="carCloud" style="width: auto; height: 650px;">
+            </div>
+
+            <div class="contentThree">
+                <h1>Our Team</h1>
+                <p>At the heart of Reel World Entertainment are two dynamic families whose combined expertise is set to redefine the cinematic landscape. The Ramakrishnan family, led by the esteemed Ramesh S. Ramakrishnan, brings robust business and strategic insight from the Transworld Group.</p>
+                <p>Complementing this, the Shoukath family, brings a wealth of creative flair and industry acumen, bolstered by the recent success at Cannes. Together, our diverse talents in storytelling, production, and strategic management align to drive Reel World Entertainment towards groundbreaking achievements in film and entertainment.</p>
+            </div>
+        </div>
+        <div class="section" style="background-image: url('bg4.webp');">
+            <div  class="carCloudeCss">
+                <img src="ufo.png" alt="carCloud" style="width: 500px; height: 500;">
+            </div>
+
+
+
+            <div class="overlay"></div>
+            <div class="contentFour">
+                <h1>Current Project</h1>
+                <p>We are excited to announce our first project – tentatively titled ‘Production No. 1,’ is poised to captivate WWE and wrestling fans across India and beyond. This film will blend the rich local culture with the universal excitement of wrestling entertainment. An action-packed entertainer, it promises to deliver a thrilling mix of drama, humor, and adrenaline, setting the stage for a new era in Malayalam cinema.</p>
+            </div>
+
+            <div  class="manfieldCss">
+                <img src="man-field.png" alt="carCloud" style="width: auto; height: auto;">
+            </div>
+
+        </div>
+     
+    </div>
+
+    <!-- <script defer>
+        const sections = document.querySelectorAll('.section');
+        let currentSectionIndex = 0;
+
+        const scrollToSection = (index) => {
+            sections[index].scrollIntoView({ behavior: 'smooth' });
+        };
+
+        const autoScroll = () => {
+            currentSectionIndex = (currentSectionIndex + 1) % sections.length;
+            scrollToSection(currentSectionIndex);
+        };
+
+        let autoScrollInterval = setInterval(autoScroll, 5000); // 10 seconds
+
+        document.addEventListener('scroll', () => {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = setInterval(autoScroll, 5000); // Restart interval after manual scroll
+        });
+
+        document.addEventListener('wheel', (event) => {
+            clearInterval(autoScrollInterval);
+            if (event.deltaY > 0) {
+                currentSectionIndex = Math.min(currentSectionIndex + 1, sections.length - 1);
+            } else {
+                currentSectionIndex = Math.max(currentSectionIndex - 1, 0);
+            }
+            scrollToSection(currentSectionIndex);
+            autoScrollInterval = setInterval(autoScroll, 5000); // Restart interval after manual scroll
+        });
+    </script> -->
+</body>
+</html>
